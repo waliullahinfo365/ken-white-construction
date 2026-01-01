@@ -4,45 +4,15 @@
  * Uses Intersection Observer for scroll-triggered animations.
  */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { ServiceCard } from './ServiceCard';
 import { servicesData } from '../../data/servicesData';
 import { Phone } from 'lucide-react';
 
-
 export const ServicesSection: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Intersection Observer triggers animations when section enters viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px',
-      }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       className="relative bg-black py-16 md:py-20 lg:py-24"
       id="services"
       aria-labelledby="services-heading"
