@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* 
+ * Ken White Construction - Custom Theme Configuration
+ * Tailwind CSS v4 uses CSS-based configuration with @theme directive
+ */
+@theme {
+  /* Brand Colors - Ken White Yellow palette */
+  --color-primary-50: #FFF9E6;
+  --color-primary-100: #FFF0B3;
+  --color-primary-500: #F5B800;
+  --color-primary-600: #D9A300;
+  --color-primary-700: #B38700;
+  
+  /* Dark theme colors for professional construction look */
+  --color-dark-900: #0A0A0A;
+  --color-dark-800: #1A1A1A;
+  --color-dark-700: #2A2A2A;
+  
+  /* Typography - Oswald for headings, Roboto for body */
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  
+  /* Custom animation for badge rotation */
+  --animate-spin-slow: spin 20s linear infinite;
+}
+
+/* Base layer styles for consistent typography and smooth interactions */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ensure focus states are visible for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+}
+
+/* Utility classes for custom animations and effects */
+@layer utilities {
+  .animate-spin-slow {
+    animation: var(--animate-spin-slow);
+  }
+  
+  /* Subtle fade-in animation for form success messages */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Service card staggered entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Trust points slide-in animation for Why Choose Us section */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Line clamp utility for testimonial cards */
+.line-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Sequential arrow animations for promo bar */
+/* Arrow 1 - appears first, disappears last */
+.animate-arrow-1 {
+  animation: arrowPulse 1.5s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+/* Arrow 2 - appears second */
+.animate-arrow-2 {
+  animation: arrowPulse 1.5s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+/* Arrow 3 - appears third, closest to text, disappears first */
+.animate-arrow-3 {
+  animation: arrowPulse 1.5s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+  80% {
+    opacity: 0.5;
+    transform: translateX(2px);
+  }
+}
